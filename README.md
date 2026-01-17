@@ -47,7 +47,17 @@ npx davenov-cc@latest
 
 The `@latest` tag ensures you get the newest version.
 
-### Behavior with existing files
+## Uninstalling
+
+To remove all davenov-cc customizations from `~/.claude/`:
+
+```bash
+npx davenov-cc --uninstall
+```
+
+This only removes files installed by this package - your other customizations remain untouched.
+
+## Behavior with existing files
 
 - **Merges directories** - Existing directories are preserved, not deleted
 - **Overwrites matching files** - Files with the same path get overwritten

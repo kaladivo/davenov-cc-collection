@@ -11,9 +11,21 @@ const SOURCE_DIR = __dirname;
 // Parse command line arguments
 const args = process.argv.slice(2);
 const AUTO_OVERRIDE = args.includes("--auto-override");
+const UNINSTALL = args.includes("--uninstall");
 
-// Directories to install
+// Directories to install/uninstall
 const CUSTOMIZATION_DIRS = ["commands", "skills"];
+
+// Files/folders installed by this package (for uninstall)
+const INSTALLED_ITEMS = {
+  commands: ["davenov:cc:interview.md", "davenov:cc:rule.md", "davenov:cc:update.md"],
+  skills: [
+    "davenov:cc:expert-convex-nextjs",
+    "davenov:cc:expert-evolu-nextjs",
+    "davenov:cc:expert-nextjs-16",
+    "davenov:cc:expert-build-nostr"
+  ]
+};
 
 function createReadlineInterface() {
   return readline.createInterface({
@@ -62,7 +74,80 @@ function countFiles(dir) {
   return count;
 }
 
+function removeRecursive(target) {
+  if (!fs.existsSync(target)) return false;
+
+  const stats = fs.statSync(target);
+  if (stats.isDirectory()) {
+    fs.rmSync(target, { recursive: true, force: true });
+  } else {
+    fs.unlinkSync(target);
+  }
+  return true;
+}
+
+async function uninstall(rl) {
+  console.log("\n🗑️  Claude Code Customizations Uninstaller\n");
+  console.log(`Target: ${CLAUDE_DIR}\n`);
+
+  // Check what's installed
+  const installed = [];
+  for (const [dir, items] of Object.entries(INSTALLED_ITEMS)) {
+    for (const item of items) {
+      const fullPath = path.join(CLAUDE_DIR, dir, item);
+      if (fs.existsSync(fullPath)) {
+        installed.push({ dir, item, fullPath });
+      }
+    }
+  }
+
+  if (installed.length === 0) {
+    console.log("No davenov-cc customizations found to uninstall.");
+    return;
+  }
+
+  console.log("Found installed customizations:");
+  for (const { dir, item } of installed) {
+    console.log(`  - ${dir}/${item}`);
+  }
+  console.log();
+
+  if (!AUTO_OVERRIDE) {
+    const answer = await prompt(
+      rl,
+      "Do you want to remove these customizations? (y/N): "
+    );
+
+    if (answer.toLowerCase() !== "y") {
+      console.log("\nUninstall cancelled.");
+      return;
+    }
+  } else {
+    console.log("Auto-override enabled, proceeding...");
+  }
+
+  console.log("\nRemoving...\n");
+
+  let removed = 0;
+  for (const { dir, item, fullPath } of installed) {
+    if (removeRecursive(fullPath)) {
+      console.log(`  ✓ ${dir}/${item}`);
+      removed++;
+    }
+  }
+
+  console.log(`\n✅ Uninstall complete! Removed ${removed} item(s).\n`);
+}
+
 async function main() {
+  const rl = createReadlineInterface();
+
+  if (UNINSTALL) {
+    await uninstall(rl);
+    rl.close();
+    return;
+  }
+
   console.log("\n📦 Claude Code Customizations Installer\n");
   console.log(`Source: ${SOURCE_DIR}`);
   console.log(`Target: ${CLAUDE_DIR}\n`);
@@ -89,8 +174,6 @@ async function main() {
   const existing = available.filter((dir) =>
     fs.existsSync(path.join(CLAUDE_DIR, dir))
   );
-
-  const rl = createReadlineInterface();
 
   if (existing.length > 0) {
     console.log("⚠️  The following directories already exist:");
