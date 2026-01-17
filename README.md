@@ -26,34 +26,26 @@ Skills provide Claude with domain-specific knowledge and workflows:
 Requires Node.js (no additional dependencies).
 
 ```bash
-# Clone directly into ~/.claude/ for easy updates
-git clone <repo-url> ~/.claude/davenov-cc-collection
-cd ~/.claude/davenov-cc-collection
-
-# Run the installer
-node install.js
+npx davenov-cc
 ```
 
-The installer will:
-1. Show available customizations with file counts
-2. Ask for confirmation if files already exist in `~/.claude/`
-3. Copy `commands/` and `skills/` to `~/.claude/`
+That's it! The installer will copy all commands and skills to `~/.claude/`.
 
 ## Updating
 
-Once installed, update from any directory using the slash command:
+Update from any directory using the slash command:
 
 ```
 /davenov:cc:update
 ```
 
-This will pull the latest changes and automatically sync them to `~/.claude/`.
-
-Alternatively, update manually:
+Or run the npx command directly:
 
 ```bash
-cd ~/.claude/davenov-cc-collection && git pull && node install.js --auto-override
+npx davenov-cc@latest
 ```
+
+The `@latest` tag ensures you get the newest version.
 
 ### Behavior with existing files
 
@@ -67,15 +59,19 @@ cd ~/.claude/davenov-cc-collection && git pull && node install.js --auto-overrid
 
 ```
 .
+├── bin/
+│   └── cli.js          # npx entry point
 ├── commands/           # Slash commands (*.md files)
 │   ├── davenov:cc:interview.md
-│   └── davenov:cc:rule.md
+│   ├── davenov:cc:rule.md
+│   └── davenov:cc:update.md
 ├── skills/             # Skills with references and workflows
 │   └── <skill-name>/
 │       ├── SKILL.md        # Main skill definition
 │       ├── references/     # Reference documentation
 │       ├── workflows/      # Step-by-step workflows
 │       └── templates/      # Code templates (optional)
+├── package.json        # npm package configuration
 ├── install.js          # Installation script
 └── README.md
 ```

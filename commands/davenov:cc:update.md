@@ -6,16 +6,16 @@ allowed-tools:
 
 # Update davenov-cc-collection
 
-Pull the latest changes from the repository and reinstall to ~/.claude/.
+Download the latest version from npm and install to ~/.claude/.
 
 ## Instructions
 
-1. Navigate to the repository at `~/.claude/davenov-cc-collection/`
-2. Run `git pull` to fetch latest changes
-3. Run `node install.js --auto-override` to sync updates
-
-Execute these steps and report the results to the user.
+Run the npx command to fetch and install the latest version:
 
 ```bash
-cd ~/.claude/davenov-cc-collection && git pull && node install.js --auto-override
+npx davenov-cc@latest
 ```
+
+The `@latest` tag ensures npm fetches the newest version, bypassing any cached versions.
+
+Report the results to the user.

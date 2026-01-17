@@ -1,0 +1,35 @@
+{
+  "name": "davenov-cc",
+  "version": "1.0.0",
+  "description": "Claude Code customizations - skills and slash commands for enhanced AI-assisted development",
+  "bin": {
+    "davenov-cc": "./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaladivo/davenov-cc-collection.git"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai",
+    "skills",
+    "commands",
+    "customizations"
+  ],
+  "author": "kaladivo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaladivo/davenov-cc-collection/issues"
+  },
+  "homepage": "https://github.com/kaladivo/davenov-cc-collection#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "bin/",
+    "commands/",
+    "skills/",
+    "install.js"
+  ]
+}
