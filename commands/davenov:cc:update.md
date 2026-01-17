@@ -1,12 +1,12 @@
 ---
-description: Update davenov-cc-collection to latest version and sync to ~/.claude/
+description: Update Davenov CC (skills & slash commands collection) to the latest version
 allowed-tools:
   - Bash
 ---
 
-# Update davenov-cc-collection
+# Update Davenov CC Collection
 
-Download the latest version from npm and install to ~/.claude/.
+This command updates the **davenov-cc** npm package — a collection of Claude Code skills and slash commands — to the latest version and syncs them to your `~/.claude/` folder.
 
 ## Instructions
 

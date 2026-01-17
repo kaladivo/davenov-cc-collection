@@ -10,7 +10,6 @@ Slash commands that can be invoked with `/<command-name>`:
 
 - **davenov:cc:interview** - Interview mode for expanding specifications
 - **davenov:cc:rule** - Create or modify Claude Code rules
-- **davenov:cc:update** - Update to latest version and sync to ~/.claude/
 
 ### Skills
 
@@ -33,11 +32,15 @@ That's it! The installer will copy all commands and skills to `~/.claude/`.
 
 ## Updating
 
-Update from any directory using the slash command:
+### `/davenov:cc:update`
+
+The easiest way — just run this slash command from any Claude Code session:
 
 ```
 /davenov:cc:update
 ```
+
+### Manual update
 
 Or run the npx command directly:
 

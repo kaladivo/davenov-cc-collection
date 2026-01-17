@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Clarified `/davenov:cc:update` description to explicitly state it updates the davenov-cc package
+- Moved update command to dedicated "Updating" section in README (separate from regular commands)
+
 ## [1.0.7] - 2026-01-17
 
 ### Changed
