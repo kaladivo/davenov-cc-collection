@@ -18,11 +18,28 @@ This repository manages personal Claude Code customizations (slash commands and 
 
 Execute the requested actions based on user responses.
 
+### Changelog Management
+
+**During development:** When making changes, add entries to the `[Unreleased]` section of `CHANGELOG.md` using the appropriate category:
+- **Added** - New features
+- **Changed** - Changes to existing functionality
+- **Deprecated** - Features marked for removal
+- **Removed** - Removed features
+- **Fixed** - Bug fixes
+- **Security** - Security fixes
+
+**Before publishing:** When the user confirms NPM publishing:
+1. Review commits since last version: `git log $(git describe --tags --abbrev=0)..HEAD --oneline`
+2. Move `[Unreleased]` entries to a new version section with today's date
+3. Update the comparison links at the bottom of CHANGELOG.md
+4. Commit the changelog update with the other changes
+
 ### NPM Publishing
 
 When the user confirms NPM publishing, automatically:
-1. Bump the patch version: `npm version patch`
-2. Push the version commit and tag: `git push && git push --tags`
+1. Ensure CHANGELOG.md is updated (move Unreleased to new version)
+2. Bump the patch version: `npm version patch`
+3. Push the version commit and tag: `git push && git push --tags`
 
 That's it! GitHub Actions will automatically publish to npm when the version tag is pushed. See `.github/workflows/publish.yml`.
 
