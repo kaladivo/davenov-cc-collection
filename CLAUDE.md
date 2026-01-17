@@ -8,11 +8,12 @@ This repository manages personal Claude Code customizations (slash commands and 
 
 ## Post-Change Workflow
 
+1. **Update README**: If adding/removing/modifying skills or commands, update README.md to reflect the changes. Don't ask user about this. Just do it, if something relevant changed.
+
 **After making any changes to files in this repository**, use AskUserQuestion to ask the user:
 
-1. **Update README**: If adding/removing/modifying skills or commands, update README.md to reflect the changes.
-2. **Commit & Push**: "Should I commit and push these changes to the remote repository?"
-3. **Sync to local**: "Should I sync the changes to your local `~/.claude/` folder using `node install.js`?"
+1. **Commit & Push**: "Should I commit and push these changes to the remote repository?"
+2. **Sync to local**: "Should I sync the changes to your local `~/.claude/` folder using `node install.js`?"
 
 Execute the requested actions based on user responses.
 
