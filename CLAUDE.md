@@ -23,9 +23,8 @@ Execute the requested actions based on user responses.
 When the user confirms NPM publishing, automatically:
 1. Bump the patch version: `npm version patch`
 2. Push the version commit and tag: `git push && git push --tags`
-3. Publish to NPM: `npm publish`
 
-This ensures users running `npx davenov-cc@latest` get the newest version.
+That's it! GitHub Actions will automatically publish to npm when the version tag is pushed. See `.github/workflows/publish.yml`.
 
 ## Commands
 
