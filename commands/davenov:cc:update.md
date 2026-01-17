@@ -10,12 +10,13 @@ This command updates the **davenov-cc** npm package — a collection of Claude C
 
 ## Instructions
 
-Run the npx command to fetch and install the latest version:
+Run the npx command with the `--update` flag to fetch and install the latest version:
 
 ```bash
-npx davenov-cc@latest
+npx davenov-cc@latest --update
 ```
 
-The `@latest` tag ensures npm fetches the newest version, bypassing any cached versions.
+- The `@latest` tag ensures npm fetches the newest version, bypassing any cached versions
+- The `--update` flag skips confirmation prompts since we're updating existing files
 
 Report the results to the user.

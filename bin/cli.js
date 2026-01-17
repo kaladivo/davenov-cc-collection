@@ -11,6 +11,7 @@ const SOURCE_DIR = path.join(__dirname, "..");
 // Parse command line arguments
 const args = process.argv.slice(2);
 const AUTO_OVERRIDE = args.includes("--auto-override");
+const UPDATE = args.includes("--update");
 const UNINSTALL = args.includes("--uninstall");
 
 // Directories to install/uninstall
@@ -145,7 +146,11 @@ async function uninstall(rl) {
 }
 
 async function install(rl) {
-  console.log("\n✨ Davenov CC Collection\n");
+  if (UPDATE) {
+    console.log("\n🔄 Updating Davenov CC Collection...\n");
+  } else {
+    console.log("\n✨ Davenov CC Collection\n");
+  }
 
   // Check what we have to install
   const available = CUSTOMIZATION_DIRS.filter((dir) =>
@@ -168,26 +173,25 @@ async function install(rl) {
   // Check for actual file conflicts (not just directory existence)
   const itemsToOverwrite = getItemsToOverwrite();
 
-  if (itemsToOverwrite.length > 0) {
+  // Skip confirmation if updating or auto-override is enabled
+  const skipConfirmation = UPDATE || AUTO_OVERRIDE;
+
+  if (itemsToOverwrite.length > 0 && !skipConfirmation) {
     console.log("⚠️  Heads up! These will be overwritten:");
     for (const { dir, item } of itemsToOverwrite) {
       console.log(`   ${dir}/${item}`);
     }
     console.log();
 
-    if (AUTO_OVERRIDE) {
-      console.log("Auto-override enabled, let's go...");
-    } else {
-      const answer = await prompt(
-        rl,
-        "Cool with that? (y/N): "
-      );
+    const answer = await prompt(
+      rl,
+      "Cool with that? (y/N): "
+    );
 
-      if (answer.toLowerCase() !== "y") {
-        console.log("\nNo worries, nothing changed. Catch you later! 👋");
-        rl.close();
-        process.exit(0);
-      }
+    if (answer.toLowerCase() !== "y") {
+      console.log("\nNo worries, nothing changed. Catch you later! 👋");
+      rl.close();
+      process.exit(0);
     }
   }
 
@@ -197,7 +201,11 @@ async function install(rl) {
   }
 
   // Install each directory
-  console.log("Installing the good stuff...\n");
+  if (UPDATE) {
+    console.log("Syncing latest files...\n");
+  } else {
+    console.log("Installing the good stuff...\n");
+  }
 
   for (const dir of available) {
     const srcPath = path.join(SOURCE_DIR, dir);
@@ -207,7 +215,11 @@ async function install(rl) {
     copyRecursive(srcPath, destPath);
   }
 
-  console.log("\n🚀 You're all set! Go build something!\n");
+  if (UPDATE) {
+    console.log("\n✅ Updated to the latest version!\n");
+  } else {
+    console.log("\n🚀 You're all set! Go build something!\n");
+  }
 }
 
 async function main() {
