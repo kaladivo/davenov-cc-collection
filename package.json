@@ -29,7 +29,6 @@
   "files": [
     "bin/",
     "commands/",
-    "skills/",
-    "install.js"
+    "skills/"
   ]
 }

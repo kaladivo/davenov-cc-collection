@@ -13,7 +13,7 @@ This repository manages personal Claude Code customizations (slash commands and 
 **After making any changes to files in this repository**, use AskUserQuestion to ask the user:
 
 1. **Commit & Push**: "Should I commit and push these changes to the remote repository?"
-2. **Sync to local**: "Should I sync the changes to your local `~/.claude/` folder using `node install.js`?"
+2. **Sync to local**: "Should I sync the changes to your local `~/.claude/` folder?"
 3. **Publish to NPM**: "Should I publish the update to NPM?"
 
 Execute the requested actions based on user responses.
@@ -30,16 +30,21 @@ That's it! GitHub Actions will automatically publish to npm when the version tag
 
 ### Sync to local ~/.claude folder
 ```bash
-node install.js
+node bin/cli.js
 ```
-This copies `commands/` and `skills/` directories to `~/.claude/`. It will prompt for confirmation if files already exist. Note: Deleting files from this repo won't remove them from `~/.claude/` on reinstall.
+This copies `commands/` and `skills/` directories to `~/.claude/`. Note: Deleting files from this repo won't remove them from `~/.claude/` on reinstall.
+
+### Uninstall
+```bash
+node bin/cli.js --uninstall
+```
 
 ## Architecture
 
 ### Directory Structure
 - `commands/` - Slash commands (`.md` files) invoked with `/<command-name>`
 - `skills/` - Domain-specific knowledge organized as `<skill-name>/SKILL.md` with optional `references/`, `workflows/`, and `templates/` subdirectories
-- `install.js` - Node.js script that copies customizations to `~/.claude/`
+- `bin/cli.js` - CLI script for install/uninstall (used by `npx davenov-cc`)
 
 ### Skill Structure
 Each skill follows this pattern:
