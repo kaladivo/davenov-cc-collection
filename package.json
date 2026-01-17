@@ -1,6 +1,6 @@
 {
   "name": "davenov-cc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Claude Code customizations - skills and slash commands for enhanced AI-assisted development",
   "bin": {
     "davenov-cc": "./bin/cli.js"
