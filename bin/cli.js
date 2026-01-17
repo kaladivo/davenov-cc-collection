@@ -18,7 +18,7 @@ const CUSTOMIZATION_DIRS = ["commands", "skills"];
 
 // Files/folders installed by this package (for uninstall)
 const INSTALLED_ITEMS = {
-  commands: ["davenov:cc:interview.md", "davenov:cc:rule.md", "davenov:cc:update.md"],
+  commands: ["davenov:cc:help.md", "davenov:cc:interview.md", "davenov:cc:rule.md", "davenov:cc:update.md"],
   skills: [
     "davenov:cc:expert-convex-nextjs",
     "davenov:cc:expert-evolu-nextjs",

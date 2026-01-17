@@ -30,6 +30,16 @@ npx davenov-cc
 
 That's it! The installer will copy all commands and skills to `~/.claude/`.
 
+## Getting Help
+
+Run the help command to see all available commands and skills:
+
+```
+/davenov:cc:help
+```
+
+This will show you what's installed, how to use each command, and quick start tips.
+
 ## Updating
 
 ### `/davenov:cc:update`
