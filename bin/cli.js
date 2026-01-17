@@ -86,44 +86,48 @@ function removeRecursive(target) {
   return true;
 }
 
-async function uninstall(rl) {
-  console.log("\n🗑️  Claude Code Customizations Uninstaller\n");
-  console.log(`Target: ${CLAUDE_DIR}\n`);
-
-  // Check what's installed
-  const installed = [];
+function getItemsToOverwrite() {
+  const toOverwrite = [];
   for (const [dir, items] of Object.entries(INSTALLED_ITEMS)) {
     for (const item of items) {
       const fullPath = path.join(CLAUDE_DIR, dir, item);
       if (fs.existsSync(fullPath)) {
-        installed.push({ dir, item, fullPath });
+        toOverwrite.push({ dir, item, fullPath });
       }
     }
   }
+  return toOverwrite;
+}
+
+async function uninstall(rl) {
+  console.log("\n🗑️  Davenov CC Collection — Uninstaller\n");
+
+  // Check what's installed
+  const installed = getItemsToOverwrite();
 
   if (installed.length === 0) {
-    console.log("No davenov-cc customizations found to uninstall.");
+    console.log("Nothing from Davenov CC found. Already clean! 🧹\n");
     return;
   }
 
-  console.log("Found installed customizations:");
+  console.log("Found these installed:");
   for (const { dir, item } of installed) {
-    console.log(`  - ${dir}/${item}`);
+    console.log(`   ${dir}/${item}`);
   }
   console.log();
 
   if (!AUTO_OVERRIDE) {
     const answer = await prompt(
       rl,
-      "Do you want to remove these customizations? (y/N): "
+      "Remove all of these? (y/N): "
     );
 
     if (answer.toLowerCase() !== "y") {
-      console.log("\nUninstall cancelled.");
+      console.log("\nAll good, keeping everything in place. 👍\n");
       return;
     }
   } else {
-    console.log("Auto-override enabled, proceeding...");
+    console.log("Auto-override enabled, cleaning up...");
   }
 
   console.log("\nRemoving...\n");
@@ -131,18 +135,17 @@ async function uninstall(rl) {
   let removed = 0;
   for (const { dir, item, fullPath } of installed) {
     if (removeRecursive(fullPath)) {
-      console.log(`  ✓ ${dir}/${item}`);
+      console.log(`   ✓ ${dir}/${item}`);
       removed++;
     }
   }
 
-  console.log(`\n✅ Uninstall complete! Removed ${removed} item(s).\n`);
+  console.log(`\n✅ Done! Removed ${removed} item(s).`);
+  console.log("   Come back anytime! 👋\n");
 }
 
 async function install(rl) {
-  console.log("\n📦 Claude Code Customizations Installer\n");
-  console.log(`Source: ${SOURCE_DIR}`);
-  console.log(`Target: ${CLAUDE_DIR}\n`);
+  console.log("\n✨ Davenov CC Collection\n");
 
   // Check what we have to install
   const available = CUSTOMIZATION_DIRS.filter((dir) =>
@@ -150,40 +153,38 @@ async function install(rl) {
   );
 
   if (available.length === 0) {
-    console.log("No customizations found to install.");
+    console.log("Hmm, nothing to install here. That's weird.");
     process.exit(0);
   }
 
-  console.log("Available customizations:");
+  console.log("📦 What's in the box:");
   for (const dir of available) {
     const srcPath = path.join(SOURCE_DIR, dir);
     const fileCount = countFiles(srcPath);
-    console.log(`  - ${dir}/ (${fileCount} files)`);
+    console.log(`   ${dir}/ → ${fileCount} files`);
   }
   console.log();
 
-  // Check for existing files
-  const existing = available.filter((dir) =>
-    fs.existsSync(path.join(CLAUDE_DIR, dir))
-  );
+  // Check for actual file conflicts (not just directory existence)
+  const itemsToOverwrite = getItemsToOverwrite();
 
-  if (existing.length > 0) {
-    console.log("⚠️  The following directories already exist:");
-    for (const dir of existing) {
-      console.log(`  - ${path.join(CLAUDE_DIR, dir)}`);
+  if (itemsToOverwrite.length > 0) {
+    console.log("⚠️  Heads up! These will be overwritten:");
+    for (const { dir, item } of itemsToOverwrite) {
+      console.log(`   ${dir}/${item}`);
     }
     console.log();
 
     if (AUTO_OVERRIDE) {
-      console.log("Auto-override enabled, proceeding...");
+      console.log("Auto-override enabled, let's go...");
     } else {
       const answer = await prompt(
         rl,
-        "Do you want to overwrite existing files? (y/N): "
+        "Cool with that? (y/N): "
       );
 
       if (answer.toLowerCase() !== "y") {
-        console.log("\nInstallation cancelled.");
+        console.log("\nNo worries, nothing changed. Catch you later! 👋");
         rl.close();
         process.exit(0);
       }
@@ -193,22 +194,20 @@ async function install(rl) {
   // Ensure .claude directory exists
   if (!fs.existsSync(CLAUDE_DIR)) {
     fs.mkdirSync(CLAUDE_DIR, { recursive: true });
-    console.log(`Created ${CLAUDE_DIR}`);
   }
 
   // Install each directory
-  console.log("\nInstalling...\n");
+  console.log("Installing the good stuff...\n");
 
   for (const dir of available) {
     const srcPath = path.join(SOURCE_DIR, dir);
     const destPath = path.join(CLAUDE_DIR, dir);
 
-    console.log(`  ${dir}/`);
+    console.log(`   ✓ ${dir}/`);
     copyRecursive(srcPath, destPath);
   }
 
-  console.log("\n✅ Installation complete!\n");
-  console.log("Your customizations are now available in Claude Code.");
+  console.log("\n🚀 You're all set! Go build something!\n");
 }
 
 async function main() {

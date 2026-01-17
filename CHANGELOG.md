@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Revamped installer output with friendlier, more casual messaging ("Davenov CC Collection")
+- Smart overwrite detection: only prompts for confirmation when files would actually be overwritten
+- Fresh installs now skip confirmation prompt entirely
+- Unified code by reusing `getItemsToOverwrite()` for both install and uninstall
+
 ## [1.0.6] - 2026-01-17
 
 ### Added
