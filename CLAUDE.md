@@ -14,8 +14,18 @@ This repository manages personal Claude Code customizations (slash commands and 
 
 1. **Commit & Push**: "Should I commit and push these changes to the remote repository?"
 2. **Sync to local**: "Should I sync the changes to your local `~/.claude/` folder using `node install.js`?"
+3. **Publish to NPM**: "Should I publish the update to NPM?"
 
 Execute the requested actions based on user responses.
+
+### NPM Publishing
+
+When the user confirms NPM publishing, automatically:
+1. Bump the patch version: `npm version patch`
+2. Push the version commit and tag: `git push && git push --tags`
+3. Publish to NPM: `npm publish`
+
+This ensures users running `npx davenov-cc@latest` get the newest version.
 
 ## Commands
 
