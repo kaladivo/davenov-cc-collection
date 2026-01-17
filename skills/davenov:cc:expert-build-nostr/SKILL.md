@@ -1,5 +1,5 @@
 ---
-name: expert-build-nostr
+name: davenov:cc:expert-build-nostr
 description: Build Nostr applications for decentralized data exchange between clients. Full lifecycle - implement pub/sub messaging, relay connections, event handling, encryption, and custom protocols. Uses nostr-tools library.
 ---
 

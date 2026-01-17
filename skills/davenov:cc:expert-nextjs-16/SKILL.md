@@ -1,5 +1,5 @@
 ---
-name: expert-build-nextjs-16
+name: davenov:cc:expert-nextjs-16
 description: Build Next.js 16 applications with modern patterns. Covers Cache Components, proxy.ts, Server/Client Components, Server Actions, and DevTools MCP integration.
 ---
 

@@ -8,17 +8,17 @@ A personal collection of Claude Code customizations including skills and slash c
 
 Slash commands that can be invoked with `/<command-name>`:
 
-- **interview** - Interview mode for expanding specifications
-- **rule** - Create or modify Claude Code rules
+- **davenov:cc:interview** - Interview mode for expanding specifications
+- **davenov:cc:rule** - Create or modify Claude Code rules
 
 ### Skills (`skills/`)
 
 Skills provide Claude with domain-specific knowledge and workflows:
 
-- **expert-convex-nextjs** - Building full-stack apps with Convex backend and Next.js frontend
-- **expert-evolu-nextjs** - Local-first apps with Evolu and Next.js (offline-first, e2e encryption)
-- **expert-nextjs-16** - Next.js 16 patterns including Cache Components, Server Actions, and more
-- **expert-build-nostr** - Building Nostr applications for decentralized data exchange
+- **davenov:cc:expert-convex-nextjs** - Building full-stack apps with Convex backend and Next.js frontend
+- **davenov:cc:expert-evolu-nextjs** - Local-first apps with Evolu and Next.js (offline-first, e2e encryption)
+- **davenov:cc:expert-nextjs-16** - Next.js 16 patterns including Cache Components, Server Actions, and more
+- **davenov:cc:expert-build-nostr** - Building Nostr applications for decentralized data exchange
 
 ## Installation
 
@@ -51,8 +51,8 @@ The installer will:
 ```
 .
 ├── commands/           # Slash commands (*.md files)
-│   ├── interview.md
-│   └── rule.md
+│   ├── davenov:cc:interview.md
+│   └── davenov:cc:rule.md
 ├── skills/             # Skills with references and workflows
 │   └── <skill-name>/
 │       ├── SKILL.md        # Main skill definition

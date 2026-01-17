@@ -10,9 +10,9 @@ This repository manages personal Claude Code customizations (slash commands and 
 
 **After making any changes to files in this repository**, use AskUserQuestion to ask the user:
 
-1. **Commit & Push**: "Should I commit and push these changes to the remote repository?"
-2. **Sync to local**: "Should I sync the changes to your local `~/.claude/` folder using `node install.js`?"
-3. **Update README**: If adding/removing/modifying skills or commands, update README.md to reflect the changes.
+1. **Update README**: If adding/removing/modifying skills or commands, update README.md to reflect the changes.
+2. **Commit & Push**: "Should I commit and push these changes to the remote repository?"
+3. **Sync to local**: "Should I sync the changes to your local `~/.claude/` folder using `node install.js`?"
 
 Execute the requested actions based on user responses.
 
@@ -65,6 +65,6 @@ Commands can use `$ARGUMENTS` to reference user-provided arguments and `@file-pa
 
 ## Current Contents
 
-**Commands:** `interview`, `rule`
+**Commands:** `davenov:cc:interview`, `davenov:cc:rule`
 
-**Skills:** `expert-convex-nextjs`, `expert-evolu-nextjs`, `expert-nextjs-16`, `expert-build-nostr`
+**Skills:** `davenov:cc:expert-convex-nextjs`, `davenov:cc:expert-evolu-nextjs`, `davenov:cc:expert-nextjs-16`, `davenov:cc:expert-build-nostr`

@@ -1,5 +1,5 @@
 ---
-name: expert-convex-nextjs
+name: davenov:cc:expert-convex-nextjs
 description: Provides expertise for building full-stack applications with Convex backend and Next.js frontend, including schema design, type-safe functions, authentication, server rendering, and real-time subscriptions. Use when building or debugging Convex + Next.js applications, implementing real-time features, or needing guidance on Convex Auth, preloadQuery patterns, or function design.
 ---
 

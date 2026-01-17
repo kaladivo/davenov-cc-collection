@@ -1,5 +1,5 @@
 ---
-name: expert-evolu-nextjs
+name: davenov:cc:expert-evolu-nextjs
 description: Build local-first apps with Evolu and Next.js for offline-first operation, end-to-end encryption, and cross-device sync. Covers branded types, reactive queries, CRUD, and mnemonic recovery. Use when avoiding backend infrastructure or prioritizing privacy.
 ---
 
