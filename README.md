@@ -10,6 +10,7 @@ Slash commands that can be invoked with `/<command-name>`:
 
 - **davenov:cc:interview** - Interview mode for expanding specifications
 - **davenov:cc:rule** - Create or modify Claude Code rules
+- **davenov:cc:update** - Update to latest version and sync to ~/.claude/
 
 ### Skills (`skills/`)
 
@@ -25,9 +26,9 @@ Skills provide Claude with domain-specific knowledge and workflows:
 Requires Node.js (no additional dependencies).
 
 ```bash
-# Clone the repository
-git clone <repo-url>
-cd davenov-cc-collection
+# Clone directly into ~/.claude/ for easy updates
+git clone <repo-url> ~/.claude/davenov-cc-collection
+cd ~/.claude/davenov-cc-collection
 
 # Run the installer
 node install.js
@@ -37,6 +38,22 @@ The installer will:
 1. Show available customizations with file counts
 2. Ask for confirmation if files already exist in `~/.claude/`
 3. Copy `commands/` and `skills/` to `~/.claude/`
+
+## Updating
+
+Once installed, update from any directory using the slash command:
+
+```
+/davenov:cc:update
+```
+
+This will pull the latest changes and automatically sync them to `~/.claude/`.
+
+Alternatively, update manually:
+
+```bash
+cd ~/.claude/davenov-cc-collection && git pull && node install.js --auto-override
+```
 
 ### Behavior with existing files
 
