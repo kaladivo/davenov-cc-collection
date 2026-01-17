@@ -12,6 +12,7 @@ This repository manages personal Claude Code customizations (slash commands and 
 
 1. **Commit & Push**: "Should I commit and push these changes to the remote repository?"
 2. **Sync to local**: "Should I sync the changes to your local `~/.claude/` folder using `node install.js`?"
+3. **Update README**: If adding/removing/modifying skills or commands, update README.md to reflect the changes.
 
 Execute the requested actions based on user responses.
 
@@ -21,7 +22,7 @@ Execute the requested actions based on user responses.
 ```bash
 node install.js
 ```
-This copies `commands/` and `skills/` directories to `~/.claude/`. It will prompt for confirmation if files already exist.
+This copies `commands/` and `skills/` directories to `~/.claude/`. It will prompt for confirmation if files already exist. Note: Deleting files from this repo won't remove them from `~/.claude/` on reinstall.
 
 ## Architecture
 
@@ -40,6 +41,14 @@ skills/<skill-name>/
 └── templates/         # Code templates (optional)
 ```
 
+**SKILL.md frontmatter:**
+```yaml
+---
+name: skill-name
+description: Detailed description of when to use this skill
+---
+```
+
 ### Command Structure
 Commands are single `.md` files with YAML frontmatter:
 ```yaml
@@ -51,6 +60,8 @@ allowed-tools:         # Optional: restrict available tools
   - Write
 ---
 ```
+
+Commands can use `$ARGUMENTS` to reference user-provided arguments and `@file-path` to include file contents.
 
 ## Current Contents
 
