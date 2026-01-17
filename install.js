@@ -8,6 +8,10 @@ const readline = require("readline");
 const CLAUDE_DIR = path.join(os.homedir(), ".claude");
 const SOURCE_DIR = __dirname;
 
+// Parse command line arguments
+const args = process.argv.slice(2);
+const AUTO_OVERRIDE = args.includes("--auto-override");
+
 // Directories to install
 const CUSTOMIZATION_DIRS = ["commands", "skills"];
 
@@ -95,15 +99,19 @@ async function main() {
     }
     console.log();
 
-    const answer = await prompt(
-      rl,
-      "Do you want to overwrite existing files? (y/N): "
-    );
+    if (AUTO_OVERRIDE) {
+      console.log("Auto-override enabled, proceeding...");
+    } else {
+      const answer = await prompt(
+        rl,
+        "Do you want to overwrite existing files? (y/N): "
+      );
 
-    if (answer.toLowerCase() !== "y") {
-      console.log("\nInstallation cancelled.");
-      rl.close();
-      process.exit(0);
+      if (answer.toLowerCase() !== "y") {
+        console.log("\nInstallation cancelled.");
+        rl.close();
+        process.exit(0);
+      }
     }
   }
 
