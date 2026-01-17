@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.9] - 2026-01-17
+
 ### Added
 
 - New `/davenov:cc:help` command to show available commands and skills with usage examples
@@ -85,7 +87,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Commands: `davenov:cc:interview`, `davenov:cc:rule`, `davenov:cc:update`
 - Skills: `davenov:cc:expert-convex-nextjs`, `davenov:cc:expert-evolu-nextjs`, `davenov:cc:expert-nextjs-16`, `davenov:cc:expert-build-nostr`
 
-[Unreleased]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.8...HEAD
+[Unreleased]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.9...HEAD
+[1.0.9]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.8...v1.0.9
 [1.0.8]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.7...v1.0.8
 [1.0.7]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.6...v1.0.7
 [1.0.6]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.5...v1.0.6
