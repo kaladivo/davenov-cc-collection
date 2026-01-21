@@ -1,5 +1,8 @@
 # Claude Code Customizations Collection
 
+[![npm version](https://img.shields.io/npm/v/davenov-cc.svg)](https://www.npmjs.com/package/davenov-cc)
+[![npm downloads](https://img.shields.io/npm/dm/davenov-cc.svg)](https://www.npmjs.com/package/davenov-cc)
+
 A personal collection of Claude Code customizations including skills and slash commands.
 
 ## Contents
