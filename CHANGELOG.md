@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.12] - 2026-01-21
+
 ### Changed
 
 - Renamed `/brainstorm` to `/davenov:cc:brainstorm` to match the collection's naming convention
@@ -105,7 +107,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Commands: `davenov:cc:interview`, `davenov:cc:rule`, `davenov:cc:update`
 - Skills: `davenov:cc:expert-convex-nextjs`, `davenov:cc:expert-evolu-nextjs`, `davenov:cc:expert-nextjs-16`, `davenov:cc:expert-build-nostr`
 
-[Unreleased]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.11...HEAD
+[Unreleased]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.12...HEAD
+[1.0.12]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.11...v1.0.12
 [1.0.11]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.10...v1.0.11
 [1.0.10]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.9...v1.0.10
 [1.0.9]: https://github.com/kaladivo/davenov-cc-collection/compare/v1.0.8...v1.0.9
