@@ -97,6 +97,6 @@ Commands can use `$ARGUMENTS` to reference user-provided arguments and `@file-pa
 
 ## Current Contents
 
-**Commands:** `davenov:cc:changelog`, `davenov:cc:interview`, `davenov:cc:rule`, `davenov:cc:update`
+**Commands:** `brainstorm`, `davenov:cc:changelog`, `davenov:cc:interview`, `davenov:cc:rule`, `davenov:cc:update`
 
 **Skills:** `davenov:cc:expert-convex-nextjs`, `davenov:cc:expert-evolu-nextjs`, `davenov:cc:expert-nextjs-16`, `davenov:cc:expert-build-nostr`
