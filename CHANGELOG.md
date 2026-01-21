@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Renamed `/brainstorm` to `/davenov:cc:brainstorm` to match the collection's naming convention
+
 ## [1.0.11] - 2026-01-21
 
 ### Added

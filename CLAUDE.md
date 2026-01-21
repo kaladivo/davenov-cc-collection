@@ -95,8 +95,12 @@ allowed-tools:         # Optional: restrict available tools
 
 Commands can use `$ARGUMENTS` to reference user-provided arguments and `@file-path` to include file contents.
 
+### Naming Convention
+
+All commands and skills in this collection use the `davenov:cc:` prefix. This helps users who install this package quickly identify which commands come from this collection vs. other sources.
+
 ## Current Contents
 
-**Commands:** `brainstorm`, `davenov:cc:changelog`, `davenov:cc:interview`, `davenov:cc:rule`, `davenov:cc:update`
+**Commands:** `davenov:cc:brainstorm`, `davenov:cc:changelog`, `davenov:cc:help`, `davenov:cc:interview`, `davenov:cc:rule`, `davenov:cc:update`
 
 **Skills:** `davenov:cc:expert-convex-nextjs`, `davenov:cc:expert-evolu-nextjs`, `davenov:cc:expert-nextjs-16`, `davenov:cc:expert-build-nostr`

@@ -11,10 +11,12 @@ A personal collection of Claude Code customizations including skills and slash c
 
 Slash commands that can be invoked with `/<command-name>`:
 
-- **brainstorm** - Brainstorm a topic through thoughtful, probing questions that reveal hidden assumptions and unexplored angles
+- **davenov:cc:brainstorm** - Brainstorm a topic through thoughtful, probing questions that reveal hidden assumptions and unexplored angles
 - **davenov:cc:changelog** - Initialize or manage a CHANGELOG.md following Keep a Changelog format
+- **davenov:cc:help** - Show available commands and skills with usage examples
 - **davenov:cc:interview** - Interview mode for expanding specifications
 - **davenov:cc:rule** - Create or modify Claude Code rules
+- **davenov:cc:update** - Update davenov-cc to the latest version
 
 ### Skills
 
